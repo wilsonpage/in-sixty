@@ -20,6 +20,7 @@
       margin: 0 auto 21px;
       max-width: 600px;
       box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+      background: #fff;
     }
 
     .placeholder > .inner {
@@ -48,7 +49,13 @@
 
     // create an observer
     var observer = new IntersectionObserver(onChange, {
-      rootMargin: '100% 0%'
+
+      // trigger callback when an observed item
+      // is within 50% of the viewport's height
+      rootMargin: '50% 0%'
+
+      // trigger callback when at least 50% (0.5)
+      // of an item is within the viewport (root)
       // threshold: [0.5]
     });
 

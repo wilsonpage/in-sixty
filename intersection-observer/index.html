@@ -36,7 +36,15 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 2000ms 500ms;
+    }
+
+    .placeholder > .inner > img.loaded {
+      animation: fade-in 2000ms both;
+    }
+
+    @keyframes fade-in {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
   </style>
@@ -49,35 +57,12 @@
 
     // create an observer
     var observer = new IntersectionObserver(onChange, {
-
-      // trigger callback when an observed item
-      // is within 50% of the viewport's height
-      rootMargin: '50% 0%'
-
-      // trigger callback when at least 50% (0.5)
-      // of an item is within the viewport (root)
-      // threshold: [0.5]
+      // rootMargin: '50% 0%'
+      threshold: [0.5]
     });
 
     // observe all the placeholder elements
     els.forEach(el => observer.observe(el));
-
-    function render(count) {
-      var result = [];
-
-      while (count--) {
-        var el = document.createElement('div');
-        var inner = document.createElement('div');
-        el.className = 'placeholder';
-        el.dataset.src = `http://lorempixel.com/g/600/300/?bust=${count}` ;
-        inner.className = 'inner';
-        el.appendChild(inner);
-        document.body.appendChild(el);
-        result.push(el);
-      }
-
-      return result;
-    }
 
     function onChange(changes) {
       changes.forEach(change => {
@@ -88,11 +73,28 @@
         el.firstChild.appendChild(image);
         observer.unobserve(el);
 
-        image.onload = () => {
-          requestAnimationFrame(() => image.style.opacity = 1);
-        };
+        image.onload = () => image.classList.add('loaded');
       });
     }
+
+    function render(count) {
+      var result = [];
+
+      while (count--) {
+        var el = document.createElement('div');
+        var inner = document.createElement('div');
+        var random = Math.floor(Math.random() * 10) + 1;
+        el.className = 'placeholder';
+        el.dataset.src = `images/${random}.jpeg` ;
+        inner.className = 'inner';
+        el.appendChild(inner);
+        document.body.appendChild(el);
+        result.push(el);
+      }
+
+      return result;
+    }
+
   })();
 </script>
 </body>

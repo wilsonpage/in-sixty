@@ -6,6 +6,6 @@ Currently the `IntersectionObserver` is only available in Chrome Canary, but the
 
 LINKS
 
-[1] Live Demo (requires Chrome Canary) - https://wilsonpage.github.com/in-sixty/intersection-observer
-[2] Explainer - https://github.com/WICG/IntersectionObserver/blob/gh-pages/explainer.md
-[3] Gecko Bug - https://bugzilla.mozilla.org/show_bug.cgi?id=1243846
+- [1] Live Demo (requires Chrome Canary) - https://wilsonpage.github.com/in-sixty/intersection-observer
+- [2] Explainer - https://github.com/WICG/IntersectionObserver/blob/gh-pages/explainer.md
+- [3] Gecko Bug - https://bugzilla.mozilla.org/show_bug.cgi?id=1243846
